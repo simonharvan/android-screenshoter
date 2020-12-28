@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Screenshoter</string>
+    <string name="first_fragment_label">Screenshoter</string>
+    <string name="web_config">Server config</string>
+    <string name="running">Server run: %1$s</string>
+    <string name="device_name">Device name</string>
+    <string name="access_key">Access key</string>
+    <string name="secret_key">Secret key</string>
+    <string name="bucket_name">Bucket name</string>
+    <string name="validation_error">You have to enter all values</string>
+    <string name="recording">Application is sending screenshot every %1$d seconds</string>
+</resources>
