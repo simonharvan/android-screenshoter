@@ -17,20 +17,18 @@ import android.media.projection.MediaProjectionManager
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.text.format.DateFormat
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Display
 import android.view.OrientationEventListener
 import android.view.WindowManager
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.lang.Math.abs
 import java.nio.ByteBuffer
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.ThreadPoolExecutor
-import java.util.concurrent.TimeUnit
+import java.util.*
 
 
 class ScreenshotService : Service() {
@@ -81,7 +79,8 @@ class ScreenshotService : Service() {
                     bitmap.copyPixelsFromBuffer(buffer)
 
                     // write bitmap to a file
-                    val fileName = mDeviceName?.toLowerCase()?.replace(" ", "_") + "_" + timestamp + ".png"
+                    var fileName = mDeviceName + "_" + DateFormat.format("yyyy-MM-dd_HH:mm:ss", Date()) + ".png"
+                    fileName = fileName.toLowerCase(Locale.ROOT).replace(" ", "_")
                     fos = FileOutputStream(mStoreDir + "/" + fileName);
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 
